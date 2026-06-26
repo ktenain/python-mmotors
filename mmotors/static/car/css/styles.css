@@ -1,0 +1,148 @@
+/* TODO faire une mise en page portable puis ecrans */
+@charset "UTF-8";
+/* 
+Reset : réinitialise (efface) les styles par défaut du navigateur
+*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color: midnightblue;
+}
+.errorlist {
+  color: red;
+}
+
+/* Style général */
+* {
+  font-family: Calibri, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Pacifico", cursive;
+  font-weight: 100;
+  font-style: normal;
+}
+h1 {
+  font-size: 1.7rem;
+}
+body {
+  background-color: whitesmoke;
+}
+.flux {
+    margin-left: 75px;
+    margin-right: 75px;
+}
+.icon {
+  width: 24px;
+  vertical-align: top;
+}
+nav {
+  background-color: midnightblue;
+  color: white;
+  padding: 10px;
+  display: flex;
+}
+nav a {
+  margin: 10px;
+}
+div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#flex-container {
+  display: flex;
+  flex-direction: row;
+}
+#recherche {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 220px;
+}
+#liste {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#detail {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+/*articles */
+article {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 1px 4px rgba(37,42,29,.16),0 4px 8px rgba(37,42,29,.12);
+  border-radius: 10px;
+}
+div.photo_list {
+  width: 300px;
+  height: 175px;
+}
+img.photo_list {
+  width: 100%;
+  flex-shrink: 0;
+  height: 175px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+div.photo_detail {
+  width: 600px;
+  height: 350px;
+}
+img.photo_detail {
+  width: 100%;
+  flex-shrink: 0;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+.price {
+  min-height: 50px;
+  font-size: 1.2rem;
+  align-content: center;
+}
+.model {
+  font-size: 1.1rem;
+}
+.detl {
+  min-height: 15px;
+  font-size: 1.1rem;
+  align-content: center;
+}
+.opt {
+  min-height: 15px;
+  font-size: 1rem;
+  align-content: center;
+  margin-left: 5px;
+}
+.bouton {
+  align-items: center;
+  border: 0;
+  border-radius: 20px;
+  background-color: midnightblue;
+  color : white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}

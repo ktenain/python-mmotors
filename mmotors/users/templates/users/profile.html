@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Mon profil</h2>
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button class="bouton" type="submit" >Enregistrer</button>
+    </form>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="bouton" type="submit">Se déconnecter</button>
+    </form>
+    <a href="{% url 'password_change' %}" class="bouton">Modifier le mot de passe</a>
+    {% if user.book.first %}
+        <a href="{% url 'my-book' %}" class="bouton">Ma réservation</a>
+    {% endif %}
+{% endblock content %}

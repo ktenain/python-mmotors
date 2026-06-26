@@ -39,5 +39,23 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse('profile', args=[str(self.id)])
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.role == self.ADMINISTRATOR:
+            group = Group.objects.get(name='administrators')
+            group.user_set.add(self)
+        elif self.role == self.AFTERSALES:
+            group = Group.objects.get(name='aftersales')
+            group.user_set.add(self)
+        elif self.role == self.COMMERCIAL:
+            group = Group.objects.get(name='commercials')
+            group.user_set.add(self)
+        elif self.role == self.CUSTOMER:
+            group = Group.objects.get(name='customers')
+            group.user_set.add(self)
+        elif self.role == self.FINANCIAL:
+            group = Group.objects.get(name='financials')
+            group.user_set.add(self)
+
     def __str__(self):
         return self.email

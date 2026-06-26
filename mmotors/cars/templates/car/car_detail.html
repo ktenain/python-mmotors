@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div>
+    <a href="javascript:history.go(-1)"><img class="icon" src="{% static 'car/icon/fleche-gauche.svg' %}" alt="Flèche">Retour à la liste des véhicules</a>
+    <div>
+        <h2>{{ car.model.brand }} {{ car.model }}</h2>
+        <article>
+            <div id="detail">
+            {% if car.photo %}
+                <div class="photo_detail"><img class="photo_detail" alt="{{ car.model.name }}" src="{{ car.photo.url }}"></div>
+            {% endif %}
+            <div>REFERENCE : {{ car.id }}</div>
+            {% if car.rental_price %}
+                <div class="price">Dès {{ car.rental_price }} €/mois</div>
+            {% endif %}
+            {% if car.selling_price %}
+                <div class="price">{{ car.selling_price }} €</div>
+            {% endif %}
+            {% if car.motorization %}
+                <div class="detl">Motorisation : {{ car.motorization }} - {{ car.motorization.fuel }}</div>
+            {% endif %}
+            {% if car.gearbox %}
+                <div class="detl">Type de boite : {{ car.get_gearboxe_display }}</div>
+            {% endif %}
+            {% if car.year %}
+                <div class="detl">Année : {{ car.year }}</div>
+            {% endif %}
+            {% if car.first_registration %}
+                <div class="detl">Mise en circulation : {{ car.first_registration }}</div>
+            {% endif %}
+            {% if car.mileage %}
+            <div class="detl">Kilométrage : {{ car.mileage }} km</div>
+            {% endif %}  
+            {% if car.color %}
+                <div class="detl">Couleur : {{ car.color }}</div>
+            {% endif %}
+            {% if car.door %}
+                <div class="detl">Nombre de portes : {{ car.door }}</div>
+            {% endif %}
+            {% if car.place %}
+                <div class="detl">Nombre de place : {{ car.place }}</div>
+            {% endif %}
+            {% if car.din_power %}
+                <div class="detl">Puissance DIN : {{ car.din_power }}</div>
+            {% endif %}
+            {% if car.tax_horsepower %}
+                <div class="detl">Puissance fiscale : {{ car.tax_horsepower }}</div>
+            {% endif %}
+            {% if car.tax_horsepower %}
+                <div class="detl">Options :</div>
+                {% for option in car.option.all %}
+                    <div class="opt">{{ option }}</div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </article>
+        {% if user.is_authenticated %}
+            <div class="'button">
+                <a href="{% url 'car-book' car.id %}" class="bouton">Réserver</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Mmotors</title>
+        <link rel="stylesheet" href="{% static 'car/css/styles.css' %}" />
+    </head>
+    <body class="flux">
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'car-list' 'rent' %}">Louer</a>
+            <a href="{% url 'car-list' 'buy' %}">Acheter</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">{{ user.first_name }}</a>
+            {% else %}
+                <a href="{% url 'login' %}">Se connecter</a>
+            {% endif %}
+            <a href="tel:+33505050505">05 05 05 05 05</a>
+        </nav>
+        {% block content %}{% endblock %}
+    </body>
+</html>
