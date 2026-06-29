@@ -6,6 +6,7 @@ from django.http import Http404
 from users.models import User
 from cars.models import Car
 from django.contrib.auth.decorators import login_required
+import sentry_sdk
 
 def signup(request):
     form = forms.SignupForm()
@@ -35,4 +36,5 @@ def my_book(request):
 
         return render(request, 'cars/car_book.html', {'car': car})
     except car.DoesNotExist:
+        sentry_sdk.logger.error('La voiture n existe pas')
         raise Http404("Cette voiture n'existe pas")
